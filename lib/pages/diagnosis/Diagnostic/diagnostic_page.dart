@@ -1,8 +1,5 @@
 import 'package:dcp_movil/common/entities/diagnostic.dart';
-import 'package:dcp_movil/common/service/firebase_service.dart';
 import 'package:dcp_movil/common/widgets/base_text_widget.dart';
-import 'package:dcp_movil/global.dart';
-import 'package:dcp_movil/pages/diagnosis/Diagnostic/widgets/diagnostic_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:dcp_movil/common/values/colors.dart';
@@ -38,11 +35,10 @@ class _DiagnosticPageState extends State<DiagnosticPage> {
               child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              reusableText("Detalle del Diagnóstico", fontSize: 25),
+              reusableText("Detalle del Diagnóstico", fontSize: 22),
               reusableText(
-                  DateFormat('dd/MM/yyyy').format(
-                          diagnostic.createdAt?.toDate() ?? DateTime.now()) ??
-                      "ff",
+                  DateFormat('dd/MM/yyyy')
+                      .format(diagnostic.createdAt?.toDate() ?? DateTime.now()),
                   fontSize: 15,
                   color: AppColors.primarySecondaryElementText,
                   fontWeight: FontWeight.normal),
@@ -50,10 +46,10 @@ class _DiagnosticPageState extends State<DiagnosticPage> {
                 height: 30.h,
               ),
               Container(
-                height: 180.h,
+                height: 200.h,
                 //padding: EdgeInsets.all(5.w),
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(5.w),
+                    borderRadius: BorderRadius.circular(8),
                     image: DecorationImage(
                         fit: BoxFit.fill,
                         image: NetworkImage(diagnostic.photoURL ??
@@ -62,27 +58,60 @@ class _DiagnosticPageState extends State<DiagnosticPage> {
               SizedBox(
                 height: 30.h,
               ),
-              reusableText("Tipo de lesión", fontSize: 15),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Container(
+                    width: 20,
+                    height: 20,
+                    child: Image.asset("assets/icons/tipo-lesion.png"),
+                  ),
+                  SizedBox(
+                    width: 5,
+                  ),
+                  reusableText("Tipo de lesión", fontSize: 18),
+                ],
+              ),
               SizedBox(
                 height: 10.h,
               ),
-              reusableText(diagnostic.result ?? "",
-                  fontSize: 12,
-                  color: AppColors.primarySecondaryElementText,
-                  fontWeight: FontWeight.normal),
+              Container(
+                margin: const EdgeInsets.only(left: 25),
+                child: reusableText(diagnostic.result ?? "",
+                    fontSize: 15,
+                    color: AppColors.primarySecondaryElementText,
+                    fontWeight: FontWeight.normal),
+              ),
               SizedBox(
                 height: 30.h,
               ),
-              reusableText("Probabilidad/Severidad", fontSize: 15),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Container(
+                    width: 20,
+                    height: 20,
+                    child: Image.asset("assets/icons/probabilidad.png"),
+                  ),
+                  const SizedBox(
+                    width: 5,
+                  ),
+                  reusableText("Probabilidad/Severidad", fontSize: 18),
+                ],
+              ),
               SizedBox(
                 height: 10.h,
               ),
-              reusableText(diagnostic.probability.toString(),
-                  fontSize: 12,
-                  color: AppColors.primarySecondaryElementText,
-                  fontWeight: FontWeight.normal),
+              Container(
+                margin: const EdgeInsets.only(left: 25),
+                child: reusableText(
+                    "${diagnostic.probability!.toStringAsFixed(2)}%",
+                    fontSize: 15,
+                    color: AppColors.primarySecondaryElementText,
+                    fontWeight: FontWeight.normal),
+              ),
               SizedBox(
-                height: 150.h,
+                height: 100.h,
               ),
               buildButton("Compartir", "1", () {},
                   width: 400, marginLeft: 0, marginRight: 0),

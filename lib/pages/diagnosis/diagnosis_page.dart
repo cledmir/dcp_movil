@@ -1,15 +1,11 @@
 import 'package:dcp_movil/common/entities/diagnostic.dart';
-import 'package:dcp_movil/common/routes/names.dart';
 import 'package:dcp_movil/common/service/firebase_service.dart';
 import 'package:dcp_movil/common/widgets/base_text_widget.dart';
 import 'package:dcp_movil/global.dart';
 import 'package:dcp_movil/pages/diagnosis/Diagnostic/diagnostic_page.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:dcp_movil/common/values/colors.dart';
-import 'package:dcp_movil/pages/diagnosis/bloc/diagnosis_page_blocs.dart';
-import 'package:dcp_movil/pages/diagnosis/bloc/diagnosis_page_states.dart';
 import 'package:dcp_movil/pages/diagnosis/widgets/diagnosis_page_widgets.dart';
 
 class DiagnosisPage extends StatefulWidget {

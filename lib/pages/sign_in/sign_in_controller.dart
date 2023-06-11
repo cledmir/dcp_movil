@@ -4,7 +4,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
-import 'package:dcp_movil/common/entities/msg.dart';
 import 'package:dcp_movil/common/entities/user.dart';
 import 'package:dcp_movil/common/values/constant.dart';
 import 'package:dcp_movil/common/widgets/flutter_toast.dart';

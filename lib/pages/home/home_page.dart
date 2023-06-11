@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'package:dcp_movil/common/widgets/base_text_widget.dart';
 import 'package:dcp_movil/pages/home/home_controller.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -9,7 +8,6 @@ import 'package:dcp_movil/common/values/colors.dart';
 import 'package:dcp_movil/pages/home/bloc/home_page_blocs.dart';
 import 'package:dcp_movil/pages/home/bloc/home_page_states.dart';
 import 'package:dcp_movil/pages/home/widgets/home_page_widgets.dart';
-import 'package:image_picker/image_picker.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
