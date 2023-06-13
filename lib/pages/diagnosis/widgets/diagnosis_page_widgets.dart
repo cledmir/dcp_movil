@@ -215,27 +215,28 @@ Widget courseGrid(Diagnostic diagnostic) {
   return Center(
     child: Card(
       elevation: 0,
-      shape: RoundedRectangleBorder(
+      shape: const RoundedRectangleBorder(
         side: BorderSide(
           color: Color(0xffbEBEEFC),
         ),
-        borderRadius: const BorderRadius.all(Radius.circular(4)),
+        borderRadius: BorderRadius.all(Radius.circular(4)),
       ),
       child: Container(
           padding: EdgeInsets.symmetric(vertical: 10.h),
           child: Row(
             children: [
               Container(
-                  margin: EdgeInsetsDirectional.symmetric(
-                      vertical: 0.h, horizontal: 20.w),
-                  child: Container(
-                    height: 40,
-                    width: 40,
-                    child: Image.network(
-                      diagnostic.photoURL ?? "",
-                      fit: BoxFit.fill,
-                    ),
-                  )),
+                margin: EdgeInsetsDirectional.symmetric(
+                    vertical: 0.h, horizontal: 20.w),
+                height: 40,
+                width: 40,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(4),
+                    image: DecorationImage(
+                        fit: BoxFit.fill,
+                        image: NetworkImage(diagnostic.photoURL ??
+                            "assets/icons/Image_2.png"))),
+              ),
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,

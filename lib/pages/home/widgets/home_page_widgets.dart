@@ -264,7 +264,7 @@ Widget imageWithBackground() {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Container(
-            margin: EdgeInsets.only(top: 90.h),
+            margin: EdgeInsets.only(top: 70.h),
             child: Image.asset(
               "assets/images/woman_doctor.png",
               fit: BoxFit.cover,

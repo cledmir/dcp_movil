@@ -58,7 +58,7 @@ var bottomTabs = [
         child: Image.asset(
           width: 15.w,
           height: 15.h,
-          "assets/icons/search2.png",
+          "assets/icons/play-circle1.png",
           color: AppColors.primaryElement,
         ),
       )),

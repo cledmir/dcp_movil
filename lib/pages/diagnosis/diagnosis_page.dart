@@ -40,12 +40,12 @@ class _DiagnosisPageState extends State<DiagnosisPage> {
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             // Muestra un indicador de carga mientras se completa la operación asincrónica
-            return Center(
+            return const Center(
               child: CircularProgressIndicator(),
             );
           } else if (snapshot.hasError) {
             // Muestra un mensaje de error si ocurre algún error durante la carga
-            return Center(
+            return const Center(
               child: Text('Error al cargar los datos'),
             );
           } else {

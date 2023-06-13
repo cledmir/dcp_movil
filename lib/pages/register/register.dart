@@ -35,31 +35,31 @@ class _RegisterState extends State<Register> {
               ),
               Center(
                   child: reusableText(
-                      "Enter your details below and free sign up")),
+                      "Ingrese sus datos a continuación y regístrese")),
               Container(
                 margin: EdgeInsets.only(top: 36.h),
                 padding: EdgeInsets.only(left: 25.w, right: 25.w),
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      reusableText("User name"),
-                      buildTextField("Enter your user name", "name", "user",
+                      reusableText("Nombre"),
+                      buildTextField("Ingresa tu nombre", "name", "user",
                           (value) {
                         context.read<RegisterBlocs>().add(UserNameEvent(value));
                       }),
                       reusableText("Email"),
-                      buildTextField(
-                          "Enter your email address", "email", "user", (value) {
+                      buildTextField("Ingresa tu email", "email", "user",
+                          (value) {
                         context.read<RegisterBlocs>().add(EmailEvent(value));
                       }),
-                      reusableText("Password"),
-                      buildTextField("Enter your password", "password", "lock",
-                          (value) {
+                      reusableText("Contraseña"),
+                      buildTextField(
+                          "Ingresa tu contraseña", "password", "lock", (value) {
                         context.read<RegisterBlocs>().add(PasswordEvent(value));
                       }),
-                      reusableText("Re-enter Password"),
+                      reusableText("Repite tu Contreseña"),
                       buildTextField(
-                          "Enter your confirm password", "password", "lock",
+                          "Confirma tu contraseña", "password", "lock",
                           (value) {
                         context
                             .read<RegisterBlocs>()
@@ -70,9 +70,9 @@ class _RegisterState extends State<Register> {
               Container(
                 margin: EdgeInsets.only(left: 25.w),
                 child: reusableText(
-                    "By creating an account you have to agree with our them & condition"),
+                    "Al crear una cuenta, debe aceptar nuestros términos y condiciones"),
               ),
-              buildLogInAnfRegButton("Sing Up", "login", () {
+              buildLogInAnfRegButton("Registrarse", "login", () {
                 //Navigator.of(context).pushNamed("register");
                 RegisterController(context: context).handleEmailRegister();
               })
