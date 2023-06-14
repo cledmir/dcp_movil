@@ -60,7 +60,7 @@ class _DiagnosisPageState extends State<DiagnosisPage> {
                   ),
                   SliverToBoxAdapter(
                     child: reusableText(
-                      "Selecciona un hospital o clinica",
+                      "Selecciona el diagnóstico",
                       fontSize: 15,
                       color: AppColors.primarySecondaryElementText,
                       fontWeight: FontWeight.normal,

@@ -19,12 +19,14 @@ Widget buildPage(int index) {
 var bottomTabs = [
   BottomNavigationBarItem(
       label: "Inicio",
-      icon: SizedBox(
+      icon: Container(
+        margin: EdgeInsets.only(bottom: 5.h),
         width: 15.w,
         height: 15.h,
         child: Image.asset("assets/icons/home.png"),
       ),
-      activeIcon: SizedBox(
+      activeIcon: Container(
+        margin: EdgeInsets.only(bottom: 5.h),
         child: Image.asset(
           width: 15.w,
           height: 15.h,

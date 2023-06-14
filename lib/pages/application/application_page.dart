@@ -23,11 +23,11 @@ class _ApplicationPageState extends State<ApplicationPage> {
         child: SafeArea(
             child: Scaffold(
           body: buildPage(state.index),
-          bottomNavigationBar: Container(
-            color: Colors.red,
+          bottomNavigationBar: SizedBox(
             width: 375.w,
-            height: 80.h,
+            height: 90.h,
             child: BottomNavigationBar(
+                backgroundColor: AppColors.primaryBackground,
                 currentIndex: state.index,
                 onTap: (value) {
                   context.read<AppBlocs>().add(TrigerAppEvent(value));
