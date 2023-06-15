@@ -1,5 +1,7 @@
+import 'package:dcp_movil/pages/Information/information_page.dart';
 import 'package:dcp_movil/pages/diagnosis/bloc/diagnosis_page_blocs.dart';
 import 'package:dcp_movil/pages/diagnosis/diagnosis_page.dart';
+import 'package:dcp_movil/pages/information/bloc/information_page_blocs.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -62,6 +64,12 @@ class AppPages {
           page: const DiagnosisPage(),
           bloc: BlocProvider(
             create: (_) => DiagnosispageBlocs(),
+          )),
+      PageEntity(
+          route: AppRoutes.INFORMATION_PAGE,
+          page: const InformationPage(),
+          bloc: BlocProvider(
+            create: (_) => InformationpageBlocs(),
           )),
     ];
   }

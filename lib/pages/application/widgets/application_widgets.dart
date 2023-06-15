@@ -1,3 +1,4 @@
+import 'package:dcp_movil/pages/Information/information_page.dart';
 import 'package:dcp_movil/pages/diagnosis/diagnosis_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -9,7 +10,7 @@ Widget buildPage(int index) {
   List<Widget> _widget = [
     const HomePage(),
     const DiagnosisPage(),
-    const Center(child: Text("Course")),
+    const InformationPage(),
     const ProfilePage(),
   ];
 

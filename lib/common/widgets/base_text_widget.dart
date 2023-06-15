@@ -16,6 +16,9 @@ Widget reusableText(
         vertical: verticalMargin.h, horizontal: horizontalMargin.w),
     child: Text(
       text,
+      maxLines: 3,
+      overflow: TextOverflow.ellipsis,
+      textWidthBasis: TextWidthBasis.longestLine,
       style: TextStyle(
           color: color, fontWeight: fontWeight, fontSize: fontSize.sp),
     ),
