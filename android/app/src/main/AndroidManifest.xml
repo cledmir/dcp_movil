@@ -1,8 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
 package="com.example.dcp_movil">
     <application
-        android:label="Dermacheck"
-        android:name="${applicationName}"
+        android:label="dcp_movil"
+        android:name="Dermacheck"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
