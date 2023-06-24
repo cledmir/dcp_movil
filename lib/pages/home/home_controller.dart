@@ -61,10 +61,12 @@ class HomeController {
     final ApiService _apiService = ApiService();
 
     dynamic result = await _apiService.predictImage(imageUrl);
-
+    print("Empieza");
+    print(result);
     String filename = result['filename'];
     String prediction = result['prediction'];
     double? probability = result['probability'];
+    print(prediction);
     String userId = Global.storageService.getUserId();
     Diagnostic diagnostic = Diagnostic(
       createdAt: Timestamp.now(),
@@ -74,6 +76,8 @@ class HomeController {
       severity: severity[prediction],
       state: 'Completado',
     );
+    print("transformado");
+    print(diagnostic.result);
 
     await _firebaseService.createDiagnostic(userId, diagnostic);
   }

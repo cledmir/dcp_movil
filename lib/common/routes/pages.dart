@@ -87,12 +87,18 @@ class AppPages {
     if (settings.name != null) {
       var result = routes().where((element) => element.route == settings.name);
       if (result.isNotEmpty) {
-        bool isLoggedIn = Global.storageService.getIsLoggedIn();
-        if (isLoggedIn) {
+        bool deviceFirstOpen = Global.storageService.getDeviceFirstOpen();
+        if (result.first.route == AppRoutes.INITIAL && deviceFirstOpen) {
+          bool isLoggedIn = Global.storageService.getIsLoggedIn();
+          if (isLoggedIn) {
+            return MaterialPageRoute(
+                builder: (_) => const ApplicationPage(), settings: settings);
+          }
           return MaterialPageRoute(
-              builder: (_) => const ApplicationPage(), settings: settings);
+              builder: (_) => SignIn(), settings: settings);
         }
-        return MaterialPageRoute(builder: (_) => SignIn(), settings: settings);
+        return MaterialPageRoute(
+            builder: (_) => result.first.page, settings: settings);
       }
     }
     return MaterialPageRoute(builder: (_) => SignIn(), settings: settings);

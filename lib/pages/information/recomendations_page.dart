@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../common/widgets/base_text_widget.dart';
+
 class RecomendationsPage extends StatefulWidget {
   const RecomendationsPage({Key? key}) : super(key: key);
 
@@ -42,9 +44,16 @@ class _RecomendationsPageState extends State<RecomendationsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
+      appBar: AppBar(
+        title: Container(
+          child: Container(
+            child: reusableText("Recomendaciones"),
+          ),
+        ),
+      ),
       body: SingleChildScrollView(
         child: Container(
-          margin: EdgeInsets.only(top: 100.h, bottom: 100.h),
+          margin: EdgeInsets.only(top: 50.h, bottom: 100.h),
           padding: EdgeInsets.symmetric(horizontal: 16),
           child: Column(
             children: [

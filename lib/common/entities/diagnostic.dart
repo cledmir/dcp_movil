@@ -36,8 +36,8 @@ class Diagnostic {
       if (photoURL != null) "photo_url": photoURL,
       if (probability != null) "probability": probability,
       if (result != null) "result": result,
-      if (severity != null) "result": severity,
-      if (state != null) "result": state,
+      if (severity != null) "severity": severity,
+      if (state != null) "state": state,
     };
   }
 }

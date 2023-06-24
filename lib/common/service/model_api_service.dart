@@ -8,11 +8,9 @@ class ApiService {
   Future<dynamic> predictImage(String imageUrl) async {
     final url =
         Uri.parse('$baseUrl/predict?url=${Uri.encodeComponent(imageUrl)}');
-    print("el url a enviar al api es $url");
     final response = await http.post(url);
     if (response.statusCode == 200) {
       final jsonResponse = json.decode(response.body);
-      print(jsonResponse);
       return jsonResponse;
     } else {
       toastInfo(msg: 'Error al crear el diagnóstico: ${response.statusCode}');
