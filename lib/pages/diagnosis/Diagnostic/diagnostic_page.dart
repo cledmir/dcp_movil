@@ -36,6 +36,9 @@ class _DiagnosticPageState extends State<DiagnosticPage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               reusableText("Detalle del Diagnóstico", fontSize: 22),
+              const SizedBox(
+                height: 5,
+              ),
               reusableText(
                   DateFormat('dd/MM/yyyy')
                       .format(diagnostic.createdAt?.toDate() ?? DateTime.now()),

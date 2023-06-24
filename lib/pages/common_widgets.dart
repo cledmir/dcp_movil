@@ -22,8 +22,8 @@ AppBar buildAppBar(String type) {
 
 Widget buildThirdPartyLogin(BuildContext context) {
   return Container(
-      margin: EdgeInsets.only(top: 40.h, bottom: 20.h),
-      padding: EdgeInsets.only(left: 50.w, right: 50.w),
+      margin: EdgeInsets.only(top: 10.h),
+      padding: EdgeInsets.only(left: 50.w, right: 50.w, bottom: 25.h),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
@@ -66,7 +66,7 @@ Widget buildTextField(String hintText, String textType, String iconName,
     margin: EdgeInsets.only(bottom: 20.h),
     decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.all(Radius.circular(15.w)),
+        borderRadius: const BorderRadius.all(Radius.circular(4)),
         border: Border.all(color: AppColors.primaryFourElementText)),
     child: Row(
       children: [
@@ -111,20 +111,77 @@ Widget buildTextField(String hintText, String textType, String iconName,
 
 Widget forgotPassword() {
   return Container(
-    margin: EdgeInsets.only(left: 25.w),
-    width: 260.w,
+    alignment: Alignment.center,
     height: 44.h,
     child: GestureDetector(
       onTap: () {},
       child: Text(
-        "Olvide mi contraseña",
+        "¿Olvidaste tu contraseña?",
         style: TextStyle(
-            color: AppColors.primaryText,
-            decoration: TextDecoration.underline,
-            fontSize: 12.sp,
-            decorationColor: AppColors.primaryText),
+            color: AppColors.primaryElement,
+            fontWeight: FontWeight.w500,
+            fontSize: 16.sp,
+            decorationColor: AppColors.primaryElement),
       ),
     ),
+  );
+}
+
+Widget loginpartyText() {
+  return Container(
+    alignment: Alignment.center,
+    height: 44.h,
+    child: GestureDetector(
+      onTap: () {},
+      child: Text(
+        "o ingresa con",
+        style: TextStyle(
+            color: AppColors.primaryElement,
+            fontWeight: FontWeight.w500,
+            fontSize: 16.sp,
+            decorationColor: Color(0xff0E1A30)),
+      ),
+    ),
+  );
+}
+
+Widget createAccount(void Function()? func) {
+  return Row(
+    crossAxisAlignment: CrossAxisAlignment.center,
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: [
+      Container(
+        alignment: Alignment.center,
+        height: 44.h,
+        child: GestureDetector(
+          onTap: () {},
+          child: Text(
+            "¿Aún no tienes una cuenta? ",
+            style: TextStyle(
+                color: AppColors.primaryElement,
+                fontWeight: FontWeight.w400,
+                fontSize: 16.sp,
+                decorationColor: AppColors.primaryElement),
+          ),
+        ),
+      ),
+      Container(
+        alignment: Alignment.center,
+        height: 44.h,
+        child: GestureDetector(
+          onTap: func,
+          child: Text(
+            "Crear cuenta",
+            style: TextStyle(
+                color: AppColors.primaryElement,
+                fontWeight: FontWeight.w500,
+                decoration: TextDecoration.underline,
+                fontSize: 16.sp,
+                decorationColor: AppColors.primaryElement),
+          ),
+        ),
+      ),
+    ],
   );
 }
 
@@ -135,8 +192,7 @@ Widget buildLogInAnfRegButton(
     child: Container(
       width: 325.w,
       height: 55.h,
-      margin: EdgeInsets.only(
-          left: 25.w, right: 25.w, top: buttonType == "login" ? 40.h : 20.h),
+      margin: EdgeInsets.only(left: 25.w, right: 25.w, top: 40.h),
       decoration: BoxDecoration(
           color: buttonType == "login"
               ? AppColors.primaryElement

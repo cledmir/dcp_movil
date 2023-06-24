@@ -19,42 +19,72 @@ class HomePage extends StatefulWidget {
 final FirebaseStorage storage = FirebaseStorage.instance;
 
 class _HomePageState extends State<HomePage> {
+  bool isLoading = false; // Agregar estado isLoading
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.white,
-        //appBar: buildAppBar(),
-        body: BlocBuilder<HomepageBlocs, HomePageStates>(
-            builder: (context, state) {
-          return Container(
-            //margin: EdgeInsets.symmetric(vertical: 0, horizontal: 25.w),
-            child: SingleChildScrollView(
-                child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                imageWithBackground(),
-                SizedBox(
-                  height: 30.h,
+      backgroundColor: Colors.white,
+      body: BlocBuilder<HomepageBlocs, HomePageStates>(
+        builder: (context, state) {
+          return Stack(
+            children: [
+              Container(
+                child: SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      imageWithBackground(),
+                      SizedBox(
+                        height: 30.h,
+                      ),
+                      reusableText(
+                          "Cuida tu piel, analiza tus manchas y/o lunares",
+                          fontSize: 22,
+                          horizontalMargin: 25),
+                      const SizedBox(
+                        height: 5,
+                      ),
+                      reusableText("Selecciona una opción",
+                          fontSize: 15,
+                          color: AppColors.primarySecondaryElementText,
+                          fontWeight: FontWeight.normal,
+                          horizontalMargin: 25),
+                      buildButton("Tomar foto", "1", () async {
+                        setState(() {
+                          isLoading = true; // Mostrar símbolo de carga
+                        });
+                        await HomeController(context: context)
+                            .getImageFromCamera(1);
+                        setState(() {
+                          isLoading = false; // Ocultar símbolo de carga
+                        });
+                      }),
+                      buildButton("Seleccionar foto", "2", () async {
+                        setState(() {
+                          isLoading = true; // Mostrar símbolo de carga
+                        });
+                        await HomeController(context: context)
+                            .getImageFromCamera(2);
+                        setState(() {
+                          isLoading = false; // Ocultar símbolo de carga
+                        });
+                      }),
+                    ],
+                  ),
                 ),
-                reusableText("Cuida tu piel, analiza tus manchas y/o lunares",
-                    fontSize: 22, horizontalMargin: 25),
-                SizedBox(
-                  height: 10.h,
+              ),
+              if (isLoading)
+                Container(
+                  color: Colors.black.withOpacity(0.5),
+                  child: Center(
+                    child: CircularProgressIndicator(), // Símbolo de carga
+                  ),
                 ),
-                reusableText("Selecciona una opción",
-                    fontSize: 15,
-                    color: AppColors.primarySecondaryElementText,
-                    fontWeight: FontWeight.normal,
-                    horizontalMargin: 25),
-                buildButton("Tomar foto", "1", () async {
-                  await HomeController(context: context).getImageFromCamera(1);
-                }),
-                buildButton("Seleccionar foto", "2", () async {
-                  await HomeController(context: context).getImageFromCamera(2);
-                })
-              ],
-            )),
+            ],
           );
-        }));
+        },
+      ),
+    );
   }
 }

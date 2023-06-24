@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:dcp_movil/common/widgets/flutter_toast.dart';
 
 class ApiService {
   static const String baseUrl = 'https://dcp-api-docker.azurewebsites.net';
@@ -14,6 +15,7 @@ class ApiService {
       print(jsonResponse);
       return jsonResponse;
     } else {
+      toastInfo(msg: 'Error al crear el diagnóstico: ${response.statusCode}');
       throw Exception(
           'Failed to predict image. Status code: ${response.statusCode}');
     }

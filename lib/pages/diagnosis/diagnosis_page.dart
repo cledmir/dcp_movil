@@ -58,6 +58,10 @@ class _DiagnosisPageState extends State<DiagnosisPage> {
                   SliverToBoxAdapter(
                     child: reusableText("Últimos diagnósticos", fontSize: 22),
                   ),
+                  const SliverToBoxAdapter(
+                      child: SizedBox(
+                    height: 5,
+                  )),
                   SliverToBoxAdapter(
                     child: reusableText(
                       "Selecciona el diagnóstico",

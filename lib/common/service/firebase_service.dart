@@ -52,11 +52,35 @@ class FirebaseService {
       CollectionReference usersCollection = firestore.collection('users');
       DocumentReference userDocRef = usersCollection.doc(userId);
 
-      await userDocRef.collection('diagnostics').add(diagnostic.toFirestore());
+      await userDocRef
+          .collection('diagnostics')
+          .add(diagnostic.toFirestore())
+          .then((value) => toastInfo(msg: 'Diagnostico Creado'));
     } catch (e) {
       toastInfo(msg: 'Error al crear el diagnóstico: $e');
     }
   }
+
+  //Future<List<Diagnostic>> getDiagnosticsForUser(String userId) async {
+  //  try {
+  //    CollectionReference diagnosticsCollection = FirebaseFirestore.instance
+  //        .collection('users')
+  //        .doc(userId)
+  //        .collection('diagnostics');
+//
+  //    QuerySnapshot querySnapshot = await diagnosticsCollection.get();
+//
+  //    List<Diagnostic> diagnostics = querySnapshot.docs.map((doc) {
+  //      return Diagnostic.fromFirestore(
+  //          doc as DocumentSnapshot<Map<String, dynamic>>);
+  //    }).toList();
+//
+  //    return diagnostics;
+  //  } catch (e) {
+  //    print('Error al obtener los diagnósticos del usuario: $e');
+  //    return [];
+  //  }
+  //}
 
   Future<List<Diagnostic>> getDiagnosticsForUser(String userId) async {
     try {
@@ -65,7 +89,11 @@ class FirebaseService {
           .doc(userId)
           .collection('diagnostics');
 
-      QuerySnapshot querySnapshot = await diagnosticsCollection.get();
+      QuerySnapshot querySnapshot = await diagnosticsCollection
+          .orderBy('created_at',
+              descending:
+                  true) // Ordenar por campo 'fecha' en orden descendente
+          .get();
 
       List<Diagnostic> diagnostics = querySnapshot.docs.map((doc) {
         return Diagnostic.fromFirestore(

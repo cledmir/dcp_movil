@@ -29,8 +29,8 @@ class _InformationPageState extends State<InformationPage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 reusableText("Datos informativos", fontSize: 22),
-                SizedBox(
-                  height: 10.h,
+                const SizedBox(
+                  height: 5,
                 ),
                 reusableText("Selecciona un tópico",
                     fontSize: 15,

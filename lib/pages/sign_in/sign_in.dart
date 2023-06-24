@@ -25,15 +25,25 @@ class _SignInState extends State<SignIn> {
         child: SafeArea(
             child: Scaffold(
           backgroundColor: Colors.white,
-          appBar: buildAppBar("Iniciar Sesión"),
+          //appBar: buildAppBar("Iniciar Sesión"),
           body: SingleChildScrollView(
               child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              buildThirdPartyLogin(context),
-              Center(
-                  child: reusableText(
-                      "O use su cuenta de correo electrónico para iniciar sesión")),
+              Container(
+                height: 180.h,
+                padding: EdgeInsets.only(bottom: 25.h),
+                decoration: const BoxDecoration(
+                  color: Color(0xffF3F5FF),
+                ),
+                child: Align(
+                  alignment: Alignment.bottomCenter,
+                  child: Image.asset(
+                    "assets/images/Dermacheck.png",
+                    width: 220.w,
+                  ),
+                ),
+              ),
               Container(
                 margin: EdgeInsets.only(top: 36.h),
                 padding: EdgeInsets.only(left: 25.w, right: 25.w),
@@ -59,15 +69,24 @@ class _SignInState extends State<SignIn> {
                     ]),
               ),
               forgotPassword(),
-              SizedBox(
-                height: 70.h,
-              ),
+
               buildLogInAnfRegButton("Iniciar sesión", "login", () {
                 SignInController(context: context).handleSingIn("email");
               }),
-              buildLogInAnfRegButton("Registrarse", "register", () {
+              SizedBox(
+                height: 5.h,
+              ),
+              createAccount(() {
                 Navigator.of(context).pushNamed("/register");
-              })
+              }),
+              SizedBox(
+                height: 50.h,
+              ),
+              loginpartyText(),
+              buildThirdPartyLogin(context),
+              //buildLogInAnfRegButton("Registrarse", "register", () {
+              //  Navigator.of(context).pushNamed("/register");
+              //})
             ],
           )),
         )),

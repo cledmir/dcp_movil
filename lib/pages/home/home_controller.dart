@@ -27,10 +27,13 @@ class HomeController {
   Future getImageFromCamera(int type) async {
     final picker = ImagePicker();
     final pickedFile = await picker.pickImage(
-        source: type == 1 ? ImageSource.camera : ImageSource.gallery);
+        source: type == 1 ? ImageSource.camera : ImageSource.gallery,
+        maxHeight: 256,
+        maxWidth: 256,
+        imageQuality: 50);
 
     if (pickedFile != null) {
-      _uploadImageToFirebase(File(pickedFile.path));
+      await _uploadImageToFirebase(File(pickedFile.path));
     } else {
       toastInfo(msg: 'No se seleccionó ninguna imagen.');
     }
@@ -45,7 +48,7 @@ class HomeController {
       TaskSnapshot taskSnapshot = await uploadTask.whenComplete(() => {});
       String imageUrl = await taskSnapshot.ref.getDownloadURL();
 
-      _predict(imageUrl);
+      await _predict(imageUrl);
       // Aquí puedes realizar cualquier acción necesaria con la URL de la imagen subida
       print('La imagen se subió correctamente. URL de la imagen: $imageUrl');
     } catch (e) {
@@ -72,6 +75,6 @@ class HomeController {
       state: 'Completado',
     );
 
-    _firebaseService.createDiagnostic(userId, diagnostic);
+    await _firebaseService.createDiagnostic(userId, diagnostic);
   }
 }
