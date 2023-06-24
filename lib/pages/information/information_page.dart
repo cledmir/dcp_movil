@@ -1,5 +1,7 @@
 import 'package:dcp_movil/common/widgets/base_text_widget.dart';
 import 'package:dcp_movil/pages/Information/widgets/information_page_widgets.dart';
+import 'package:dcp_movil/pages/information/lesions_page.dart';
+import 'package:dcp_movil/pages/information/recomendations_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -39,22 +41,33 @@ class _InformationPageState extends State<InformationPage> {
                 SizedBox(
                   height: 10.h,
                 ),
-                courseGrid(
+                courseGrid(() {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => LesionsPage()),
+                  );
+                },
                     backgroundColor: Color(0xffbEDF0FF),
                     borderColor: Color(0xffbD2D9FE),
-                    title: "Titulo de prueba para card",
+                    title: "Lesiones de la piel",
                     subTitle:
-                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed ...",
+                        "Información detallada sobre una amplia variedad de condiciones cutáneas.",
                     img: "assets/images/dermatologist.png"),
                 SizedBox(
                   height: 10.h,
                 ),
-                courseGrid(
+                courseGrid(() {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => RecomendationsPage()),
+                  );
+                },
                     backgroundColor: Color(0xffbFFECE7),
                     borderColor: Color(0xffbFED6CB),
-                    title: "Titulo de prueba para card",
+                    title: "Recomendaciones",
                     subTitle:
-                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed ...",
+                        "Encontrarás consejos prácticos y útiles para mantener una piel saludable. ",
                     img: "assets/images/skin.png",
                     photoMargin: 2),
               ],

@@ -15,4 +15,8 @@ class AppRoutes {
   static const DIAGNOSIS_PAGE = "/diagnosis";
   //Settings Page
   static const INFORMATION_PAGE = "/information";
+  //Settings Page
+  static const RECOMENDATION_PAGE = "/recomendation";
+  //Settings Page
+  static const lESSIONS_PAGE = "/lession";
 }

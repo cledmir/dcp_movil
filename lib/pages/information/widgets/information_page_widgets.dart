@@ -3,7 +3,7 @@ import 'package:dcp_movil/common/widgets/base_text_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-Widget courseGrid(
+Widget courseGrid(void Function() func,
     {Color backgroundColor = Colors.white,
     Color borderColor = Colors.white,
     String title = "",
@@ -49,7 +49,7 @@ Widget courseGrid(
                 SizedBox(
                   height: 8.h,
                 ),
-                _forgotPassword(Color(0xffb403C77), 15)
+                _tapText(Color(0xffb403C77), 15, func)
               ],
             )
           ],
@@ -57,10 +57,10 @@ Widget courseGrid(
   );
 }
 
-Widget _forgotPassword(Color textColor, int textSize) {
+Widget _tapText(Color textColor, int textSize, void Function()? func) {
   return Container(
     child: GestureDetector(
-      onTap: () {},
+      onTap: func,
       child: Text(
         "Ver más",
         style: TextStyle(

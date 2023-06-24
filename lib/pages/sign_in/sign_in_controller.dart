@@ -20,7 +20,7 @@ class SignInController {
     try {
       if (type == "email") {
         final state = context.read<SignInBloc>().state;
-        String emailAddress = state.email;
+        String emailAddress = state.email.trim();
         String password = state.password;
         if (emailAddress.isEmpty) {
           //
